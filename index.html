@@ -1,0 +1,1226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roberto Morelli | Data Scientist & Analytics Lead</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ink: #0a0a0a;
+            --paper: #f8f6f1;
+            --accent: #1a5f7a;
+            --accent-light: #e8f4f8;
+            --warm: #d4a574;
+            --muted: #6b6b6b;
+            --border: #e0ddd5;
+            --dark-bg: #0d1b2a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--paper);
+            color: var(--ink);
+            line-height: 1.7;
+            font-size: 17px;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background: linear-gradient(to bottom, var(--paper) 60%, transparent);
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            background: var(--paper);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .nav-logo img {
+            height: 40px;
+            width: auto;
+        }
+
+        .nav-logo span {
+            font-family: 'Instrument Serif', serif;
+            font-size: 22px;
+            font-weight: 400;
+            letter-spacing: -0.02em;
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 36px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--ink);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 100px;
+            padding-bottom: 60px;
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            max-width: 900px;
+        }
+
+        .hero-intro {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .profile-image {
+            width: 200px;
+            height: 240px;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 3px solid var(--accent);
+            box-shadow: 0 12px 30px rgba(26, 95, 122, 0.12);
+            flex-shrink: 0;
+        }
+
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-name-block {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .hero-eyebrow {
+            font-size: 12px;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .hero h1 {
+            font-family: 'Instrument Serif', serif;
+            font-size: clamp(36px, 5vw, 52px);
+            font-weight: 400;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-tagline {
+            font-family: 'Instrument Serif', serif;
+            font-size: 20px;
+            color: var(--ink);
+            font-style: italic;
+            margin-top: 4px;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-statement {
+            font-size: 20px;
+            color: var(--ink);
+            line-height: 1.75;
+            max-width: 750px;
+            animation: fadeInUp 0.8s ease 0.15s forwards;
+            opacity: 0;
+        }
+
+        /* Stats Row */
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+            animation: fadeInUp 0.8s ease 0.3s forwards;
+            opacity: 0;
+        }
+
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .stat-number {
+            font-family: 'Instrument Serif', serif;
+            font-size: 32px;
+            color: var(--accent);
+            font-weight: 400;
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 13px;
+            color: var(--muted);
+            line-height: 1.4;
+        }
+
+        /* Bridge Section */
+        .bridge-section {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .bridge-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .bridge-text {
+            font-size: 18px;
+            line-height: 1.85;
+            color: var(--muted);
+        }
+
+        .bridge-text strong {
+            color: var(--ink);
+            font-weight: 500;
+        }
+
+        /* Section Styling */
+        section {
+            padding: 100px 0;
+        }
+
+        .section-header {
+            margin-bottom: 56px;
+        }
+
+        .section-label {
+            font-size: 12px;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .section-title {
+            font-family: 'Instrument Serif', serif;
+            font-size: clamp(32px, 4vw, 42px);
+            font-weight: 400;
+            letter-spacing: -0.02em;
+        }
+
+        .section-title span {
+            font-style: italic;
+            color: var(--accent);
+        }
+
+        /* Experience Section */
+        .experience-section {
+            background: var(--paper);
+        }
+
+        .experience-timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 48px;
+        }
+
+        .experience-item {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 40px;
+            padding-bottom: 48px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .experience-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .exp-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .exp-period {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--ink);
+        }
+
+        .exp-location {
+            font-size: 13px;
+            color: var(--muted);
+        }
+
+        .exp-content {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .exp-company-row {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .exp-company-logo {
+            height: 32px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .exp-company {
+            font-family: 'Instrument Serif', serif;
+            font-size: 26px;
+            font-weight: 400;
+        }
+
+        .exp-role {
+            font-size: 15px;
+            color: var(--accent);
+            font-weight: 500;
+        }
+
+        .exp-highlights {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+        .exp-highlights li {
+            font-size: 15px;
+            color: var(--muted);
+            padding-left: 16px;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .exp-highlights li::before {
+            content: '—';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+
+        .highlight-metric {
+            color: var(--ink);
+            font-weight: 500;
+        }
+
+        .early-career-logos {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            margin-top: 12px;
+        }
+
+        .early-career-logos img {
+            height: 24px;
+            width: auto;
+            opacity: 0.7;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .skill-category {
+            background: white;
+            padding: 28px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(0,0,0,0.06);
+        }
+
+        .skill-category h3 {
+            font-family: 'Instrument Serif', serif;
+            font-size: 18px;
+            font-weight: 400;
+            margin-bottom: 20px;
+            color: var(--accent);
+        }
+
+        .skill-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .skill-list li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+            color: var(--ink);
+        }
+
+        .skill-list li img {
+            width: 22px;
+            height: 22px;
+            object-fit: contain;
+        }
+
+        /* Soft Skills Section */
+        .soft-skills-section {
+            background: white;
+            padding: 80px 0;
+        }
+
+        .soft-skills-intro {
+            font-size: 15px;
+            color: var(--muted);
+            margin-bottom: 32px;
+            max-width: 600px;
+        }
+
+        .soft-skills-intro a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .strengths-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 20px;
+        }
+
+        .strength-card {
+            background: var(--paper);
+            padding: 24px 20px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .strength-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(0,0,0,0.06);
+        }
+
+        .strength-icon {
+            font-size: 28px;
+            margin-bottom: 12px;
+        }
+
+        .strength-name {
+            font-family: 'Instrument Serif', serif;
+            font-size: 18px;
+            color: var(--ink);
+            margin-bottom: 8px;
+        }
+
+        .strength-desc {
+            font-size: 13px;
+            color: var(--muted);
+            line-height: 1.5;
+        }
+
+        /* Education Section */
+        .education-section {
+            background: var(--paper);
+        }
+
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin-bottom: 48px;
+        }
+
+        .education-card {
+            background: white;
+            padding: 32px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .education-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(0,0,0,0.06);
+        }
+
+        .edu-degree {
+            font-family: 'Instrument Serif', serif;
+            font-size: 20px;
+            font-weight: 400;
+            margin-bottom: 8px;
+        }
+
+        .edu-institution {
+            font-size: 15px;
+            color: var(--accent);
+            margin-bottom: 4px;
+        }
+
+        .edu-details {
+            font-size: 14px;
+            color: var(--muted);
+        }
+
+        .edu-grade {
+            font-size: 14px;
+            color: var(--warm);
+            font-weight: 500;
+            margin-top: 8px;
+        }
+
+        .certifications-title {
+            font-family: 'Instrument Serif', serif;
+            font-size: 24px;
+            margin-bottom: 24px;
+        }
+
+        .credentials-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+
+        .credential-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            background: white;
+            padding: 16px 20px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .credential-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.04);
+        }
+
+        .credential-item img {
+            height: 36px;
+            width: 36px;
+            object-fit: contain;
+        }
+
+        .credential-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .credential-name {
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--ink);
+        }
+
+        .credential-issuer {
+            font-size: 13px;
+            color: var(--muted);
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: var(--dark-bg);
+            color: white;
+            text-align: center;
+            padding: 100px 0;
+        }
+
+        .contact-section .section-label {
+            color: var(--warm);
+        }
+
+        .contact-section .section-title {
+            color: white;
+        }
+
+        .contact-section .section-title span {
+            color: var(--warm);
+        }
+
+        .contact-tagline {
+            font-size: 18px;
+            color: rgba(255,255,255,0.8);
+            margin-top: 16px;
+            margin-bottom: 48px;
+            font-style: italic;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 48px;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            text-align: center;
+        }
+
+        .contact-item-label {
+            font-size: 12px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 8px;
+        }
+
+        .contact-item a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+
+        .contact-item a:hover {
+            color: var(--warm);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-bg);
+            color: rgba(255,255,255,0.5);
+            text-align: center;
+            padding: 32px 0;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        footer p {
+            font-size: 13px;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .strengths-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 900px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-intro {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero-name-block {
+                align-items: center;
+            }
+
+            .hero-statement {
+                text-align: center;
+            }
+
+            .stats-row {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .experience-item {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .strengths-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .education-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .credentials-list {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-links {
+                flex-direction: column;
+                gap: 32px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 0 24px;
+            }
+
+            nav {
+                padding: 16px 24px;
+            }
+
+            .profile-image {
+                width: 160px;
+                height: 200px;
+            }
+
+            section {
+                padding: 64px 0;
+            }
+
+            .stat-number {
+                font-size: 26px;
+            }
+
+            .strengths-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-logo">
+            <img src="owl-logo-cream.png" alt="Logo">
+            <span>RM</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-intro">
+                    <div class="profile-image">
+                        <img src="profile-photo.png" alt="Roberto Morelli">
+                    </div>
+                    <div class="hero-name-block">
+                        <div class="hero-eyebrow">Data Scientist & Analytics Lead</div>
+                        <h1>Roberto Morelli</h1>
+                        <div class="hero-tagline">Data Scientist. Problem-solver. Builder.</div>
+                    </div>
+                </div>
+
+                <p class="hero-statement">
+                    I thrive where others see chaos — decoding patterns, designing frameworks, creating what didn't exist before. People grow, costs shrink, capabilities compound — that's the work.
+                </p>
+
+                <div class="stats-row">
+                    <div class="stat-item">
+                        <div class="stat-number">7-fig</div>
+                        <div class="stat-label">Annual Savings</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">4×</div>
+                        <div class="stat-label">Earlier Detection</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">K+</div>
+                        <div class="stat-label">Time Series Forecasted</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">4</div>
+                        <div class="stat-label">People Mentored</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bridge Section -->
+    <section class="bridge-section">
+        <div class="container">
+            <div class="bridge-content">
+                <p class="bridge-text">
+                    <strong>Data Scientist with 5+ years of experience</strong> transforming complex data into strategic insights. Specialized in end-to-end analytics solutions, from ETL pipelines to ML-driven forecasting and anomaly detection. Proven ability to deliver <strong>measurable business impact</strong>—including 7-figure savings—while building and mentoring high-performing teams.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="experience-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">Career Path</div>
+                <h2 class="section-title">Professional <span>Experience</span></h2>
+            </div>
+
+            <div class="experience-timeline">
+                <div class="experience-item">
+                    <div class="exp-meta">
+                        <div class="exp-period">Mar 2023 — Present</div>
+                        <div class="exp-location">Rome, Italy</div>
+                    </div>
+                    <div class="exp-content">
+                        <div class="exp-company-row">
+                            <img src="logos/poste-italiane.png" alt="Poste Italiane" class="exp-company-logo">
+                            <h3 class="exp-company">Poste Italiane</h3>
+                        </div>
+                        <div class="exp-role">Data Scientist & Analytics Lead</div>
+                        <ul class="exp-highlights">
+                            <li>Multi-cloud cost monitoring system (AWS + Azure) with Databricks, Python & SQL — <span class="highlight-metric">7-figure annual savings</span>, C-suite across 4 Business Units</li>
+                            <li>Custom ML anomaly detection (Isolation Forest + statistical rules) — <span class="highlight-metric">millions of daily data points</span>, <span class="highlight-metric">4× faster detection</span> (monthly→weekly)</li>
+                            <li>Time series forecasting (Prophet + 5-model ensemble) for <span class="highlight-metric">7-figure infrastructure budget</span></li>
+                            <li>Built and mentored analytics team from scratch: training 2 juniors + coordinating 2 vendors</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="exp-meta">
+                        <div class="exp-period">Oct 2022 — Mar 2023</div>
+                        <div class="exp-location">Italy</div>
+                    </div>
+                    <div class="exp-content">
+                        <div class="exp-company-row">
+                            <img src="logos/aruba.png" alt="Aruba" class="exp-company-logo">
+                            <h3 class="exp-company">Aruba.it</h3>
+                        </div>
+                        <div class="exp-role">Data Analyst</div>
+                        <ul class="exp-highlights">
+                            <li>Co-owner Service Desk Analytics at <span class="highlight-metric">#1 Italian hosting provider</span></li>
+                            <li>KPI dashboards (Biplus, SQL Server) for operations</li>
+                            <li>Analytics redesign with ad-hoc reporting for rapid response</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="exp-meta">
+                        <div class="exp-period">Oct 2019 — Apr 2022</div>
+                        <div class="exp-location">Italy</div>
+                    </div>
+                    <div class="exp-content">
+                        <div class="exp-company-row">
+                            <img src="logos/allianz.png" alt="Allianz" class="exp-company-logo">
+                            <h3 class="exp-company">Allianz</h3>
+                        </div>
+                        <div class="exp-role">QA & Delivery Lead</div>
+                        <ul class="exp-highlights">
+                            <li>Led launch of <span class="highlight-metric">revenue-critical feature</span> (agent commission system, Italian salesforce) — <span class="highlight-metric">zero-defect go-live</span></li>
+                            <li>Designed & executed 1000+ end-to-end test cases, sole QA owner</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="exp-meta">
+                        <div class="exp-period">2019</div>
+                        <div class="exp-location">Italy</div>
+                    </div>
+                    <div class="exp-content">
+                        <div class="exp-company-row">
+                            <h3 class="exp-company">Early Career</h3>
+                        </div>
+                        <div class="exp-role">Consultant @ Assioma.net</div>
+                        <ul class="exp-highlights">
+                            <li>@Luxottica — QA for Oakley e-commerce</li>
+                            <li>@Intesa Sanpaolo — L2 Service Desk, <span class="highlight-metric">doubled throughput (25→70/day)</span></li>
+                        </ul>
+                        <div class="early-career-logos">
+                            <img src="logos/luxottica.png" alt="Luxottica">
+                            <img src="logos/intesa-sanpaolo.png" alt="Intesa Sanpaolo">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">Technical Expertise</div>
+                <h2 class="section-title">My <span>Toolkit</span></h2>
+            </div>
+
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Languages & Libraries</h3>
+                    <ul class="skill-list">
+                        <li>
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python">
+                            Python
+                        </li>
+                        <li>
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="SQL">
+                            SQL
+                        </li>
+                        <li>
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg" alt="Pandas">
+                            Pandas / NumPy
+                        </li>
+                        <li>
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apachespark/apachespark-original.svg" alt="PySpark">
+                            PySpark
+                        </li>
+                        <li>
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/matplotlib/matplotlib-original.svg" alt="Matplotlib">
+                            Matplotlib / Seaborn
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Machine Learning</h3>
+                    <ul class="skill-list">
+                        <li>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Scikit_learn_logo_small.svg" alt="Scikit-learn">
+                            Scikit-learn
+                        </li>
+                        <li>
+                            <img src="https://cdn.worldvectorlogo.com/logos/prophet.svg" alt="Prophet">
+                            Time Series (Prophet)
+                        </li>
+                        <li>
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Anomaly">
+                            Anomaly Detection
+                        </li>
+                        <li>
+                            <img src="https://www.svgrepo.com/show/374016/settings.svg" alt="Custom">
+                            Custom Algorithms
+                        </li>
+                        <li>
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg" alt="Forecasting">
+                            Forecasting
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Cloud & Data Platforms</h3>
+                    <ul class="skill-list">
+                        <li>
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg" alt="AWS">
+                            AWS
+                        </li>
+                        <li>
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg" alt="Azure">
+                            Azure
+                        </li>
+                        <li>
+                            <img src="https://www.vectorlogo.zone/logos/databricks/databricks-icon.svg" alt="Databricks">
+                            Databricks
+                        </li>
+                        <li>
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apachekafka/apachekafka-original.svg" alt="ETL">
+                            ETL Pipelines
+                        </li>
+                        <li>
+                            <img src="https://www.svgrepo.com/show/353659/cost-estimation.svg" alt="FinOps">
+                            FinOps
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Tools & Methods</h3>
+                    <ul class="skill-list">
+                        <li>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/c/cf/New_Power_BI_Logo.svg" alt="PowerBI">
+                            PowerBI
+                        </li>
+                        <li>
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jupyter/jupyter-original.svg" alt="Jupyter">
+                            Jupyter
+                        </li>
+                        <li>
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git">
+                            Git
+                        </li>
+                        <li>
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jira/jira-original.svg" alt="Agile">
+                            Agile / Scrum
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Soft Skills Section -->
+    <section class="soft-skills-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">Personal Strengths</div>
+                <h2 class="section-title">My <span>Strengths</span></h2>
+            </div>
+            <p class="soft-skills-intro">
+                Based on <a href="https://www.gallup.com/cliftonstrengths" target="_blank">CliftonStrengths®</a> by Gallup — an assessment that identifies natural talents and how to leverage them.
+            </p>
+
+            <div class="strengths-grid">
+                <div class="strength-card">
+                    <div class="strength-icon">🔧</div>
+                    <div class="strength-name">Restorative</div>
+                    <div class="strength-desc">Diagnosing problems, finding what's broken and fixing it</div>
+                </div>
+                <div class="strength-card">
+                    <div class="strength-icon">🎯</div>
+                    <div class="strength-name">Strategic</div>
+                    <div class="strength-desc">Spotting patterns others miss, choosing optimal paths</div>
+                </div>
+                <div class="strength-card">
+                    <div class="strength-icon">📚</div>
+                    <div class="strength-name">Context</div>
+                    <div class="strength-desc">Learning from history to understand and solve today</div>
+                </div>
+                <div class="strength-card">
+                    <div class="strength-icon">👥</div>
+                    <div class="strength-name">Individualization</div>
+                    <div class="strength-desc">Building teams around each person's unique strengths</div>
+                </div>
+                <div class="strength-card">
+                    <div class="strength-icon">🌱</div>
+                    <div class="strength-name">Learner</div>
+                    <div class="strength-desc">Driven by continuous growth and improvement</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="education-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">Academic Background</div>
+                <h2 class="section-title">Education & <span>Certifications</span></h2>
+            </div>
+
+            <div class="education-grid">
+                <div class="education-card">
+                    <div class="edu-degree">M.Sc. Statistics & Actuarial Science</div>
+                    <div class="edu-institution">University of Naples Federico II</div>
+                    <div class="edu-details">2018</div>
+                    <div class="edu-grade">110/110 cum Laude</div>
+                </div>
+
+                <div class="education-card">
+                    <div class="edu-degree">B.Sc. Economics</div>
+                    <div class="edu-institution">University of Salerno</div>
+                    <div class="edu-details">2016</div>
+                </div>
+            </div>
+
+            <h3 class="certifications-title">Certifications</h3>
+            <div class="credentials-list">
+                <div class="credential-item">
+                    <img src="https://www.vectorlogo.zone/logos/databricks/databricks-icon.svg" alt="Databricks">
+                    <div class="credential-info">
+                        <div class="credential-name">Data Engineer Associate</div>
+                        <div class="credential-issuer">Databricks · 2025</div>
+                    </div>
+                </div>
+                <div class="credential-item">
+                    <img src="logos/datamasters.png" alt="DataMasters">
+                    <div class="credential-info">
+                        <div class="credential-name">AI Agentic Apps</div>
+                        <div class="credential-issuer">DataMasters · 2024</div>
+                    </div>
+                </div>
+                <div class="credential-item">
+                    <img src="logos/neural-academy.png" alt="Neural Academy">
+                    <div class="credential-info">
+                        <div class="credential-name">Data Science Master</div>
+                        <div class="credential-issuer">Neural Academy · 2022</div>
+                    </div>
+                </div>
+                <div class="credential-item">
+                    <img src="logos/unipi.png" alt="Università di Pisa">
+                    <div class="credential-info">
+                        <div class="credential-name">Data-Driven PM</div>
+                        <div class="credential-issuer">Università di Pisa · 2021</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <div class="section-label">Let's Connect</div>
+            <h2 class="section-title">Let's build <span>something</span> together</h2>
+            <p class="contact-tagline">
+                Analytical depth meets strategic intuition — at the intersection of data, decisions, and impact.
+            </p>
+
+            <div class="contact-links">
+                <div class="contact-item">
+                    <div class="contact-item-label">Email</div>
+                    <a href="mailto:roberto.morelli.eco@gmail.com">roberto.morelli.eco@gmail.com</a>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-item-label">Phone</div>
+                    <a href="tel:+393519231808">+39 351 923 1808</a>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-item-label">LinkedIn</div>
+                    <a href="https://linkedin.com/in/roberto-morelli-eco" target="_blank">roberto-morelli-eco</a>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-item-label">Location</div>
+                    <a href="#">Rome, Italy</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>© 2025 Roberto Morelli. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth reveal on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.experience-item, .skill-category, .education-card, .credential-item, .strength-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>
