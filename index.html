@@ -358,6 +358,7 @@
             gap: 16px;
         }
 
+        /* LOGO STYLING - Cruciale per mantenere le proporzioni */
         .exp-company-logo {
             height: 32px;
             width: auto;
@@ -415,6 +416,7 @@
             height: 24px;
             width: auto;
             opacity: 0.7;
+            object-fit: contain;
         }
 
         /* Skills Section */
@@ -786,7 +788,6 @@
     </style>
 </head>
 <body>
-    <!-- Navigation -->
     <nav>
         <div class="nav-logo">
             <img src="owl-logo-cream.png" alt="Logo">
@@ -800,7 +801,6 @@
         </ul>
     </nav>
 
-    <!-- Hero Section -->
     <section class="hero">
         <div class="container">
             <div class="hero-content">
@@ -841,7 +841,6 @@
         </div>
     </section>
 
-    <!-- Bridge Section -->
     <section class="bridge-section">
         <div class="container">
             <div class="bridge-content">
@@ -852,7 +851,6 @@
         </div>
     </section>
 
-    <!-- Experience Section -->
     <section id="experience" class="experience-section">
         <div class="container">
             <div class="section-header">
@@ -868,7 +866,10 @@
                     </div>
                     <div class="exp-content">
                         <div class="exp-company-row">
-                            <img src="logos/poste-italiane.png" alt="Poste Italiane" class="exp-company-logo">
+                            <picture>
+                                <source srcset="logos/poste-italiane.svg" type="image/svg+xml">
+                                <img src="logos/poste-italiane.png" alt="Poste Italiane" class="exp-company-logo">
+                            </picture>
                             <h3 class="exp-company">Poste Italiane</h3>
                         </div>
                         <div class="exp-role">Data Scientist & Analytics Lead</div>
@@ -888,7 +889,10 @@
                     </div>
                     <div class="exp-content">
                         <div class="exp-company-row">
-                            <img src="logos/aruba.png" alt="Aruba" class="exp-company-logo">
+                            <picture>
+                                <source srcset="logos/aruba.svg" type="image/svg+xml">
+                                <img src="logos/aruba.png" alt="Aruba" class="exp-company-logo">
+                            </picture>
                             <h3 class="exp-company">Aruba.it</h3>
                         </div>
                         <div class="exp-role">Data Analyst</div>
@@ -907,7 +911,10 @@
                     </div>
                     <div class="exp-content">
                         <div class="exp-company-row">
-                            <img src="logos/allianz.png" alt="Allianz" class="exp-company-logo">
+                            <picture>
+                                <source srcset="logos/allianz.svg" type="image/svg+xml">
+                                <img src="logos/allianz.png" alt="Allianz" class="exp-company-logo">
+                            </picture>
                             <h3 class="exp-company">Allianz</h3>
                         </div>
                         <div class="exp-role">QA & Delivery Lead</div>
@@ -933,8 +940,14 @@
                             <li>@Intesa Sanpaolo — L2 Service Desk, <span class="highlight-metric">doubled throughput (25→70/day)</span></li>
                         </ul>
                         <div class="early-career-logos">
-                            <img src="logos/luxottica.png" alt="Luxottica">
-                            <img src="logos/intesa-sanpaolo.png" alt="Intesa Sanpaolo">
+                            <picture>
+                                <source srcset="logos/luxottica.svg" type="image/svg+xml">
+                                <img src="logos/luxottica.png" alt="Luxottica">
+                            </picture>
+                            <picture>
+                                <source srcset="logos/intesa-sanpaolo.svg" type="image/svg+xml">
+                                <img src="logos/intesa-sanpaolo.png" alt="Intesa Sanpaolo">
+                            </picture>
                         </div>
                     </div>
                 </div>
@@ -942,7 +955,6 @@
         </div>
     </section>
 
-    <!-- Skills Section -->
     <section id="skills">
         <div class="container">
             <div class="section-header">
@@ -1054,7 +1066,6 @@
         </div>
     </section>
 
-    <!-- Soft Skills Section -->
     <section class="soft-skills-section">
         <div class="container">
             <div class="section-header">
@@ -1095,7 +1106,6 @@
         </div>
     </section>
 
-    <!-- Education Section -->
     <section id="education" class="education-section">
         <div class="container">
             <div class="section-header">
@@ -1152,7 +1162,6 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
     <section id="contact" class="contact-section">
         <div class="container">
             <div class="section-label">Let's Connect</div>
@@ -1182,7 +1191,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <div class="container">
             <p>© 2025 Roberto Morelli. All rights reserved.</p>
