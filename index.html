@@ -358,11 +358,12 @@
             gap: 16px;
         }
 
-        /* CSS per i loghi aziendali - Controlla dimensione e proporzioni */
+        /* LOGO STYLING */
         .exp-company-logo {
             height: 32px;
             width: auto;
             object-fit: contain;
+            display: block; 
         }
 
         .exp-company {
@@ -412,7 +413,6 @@
             margin-top: 12px;
         }
 
-        /* CSS per i loghi 'early career' */
         .early-career-logos img {
             height: 24px;
             width: auto;
@@ -791,7 +791,7 @@
 <body>
     <nav>
         <div class="nav-logo">
-            <img src="owl-logo-cream.png" alt="Logo">
+            <img src="owl-logo-cream.png" onerror="handleImageError(this)" alt="Logo">
             <span>RM</span>
         </div>
         <ul class="nav-links">
@@ -807,7 +807,7 @@
             <div class="hero-content">
                 <div class="hero-intro">
                     <div class="profile-image">
-                        <img src="profile-photo.png" alt="Roberto Morelli">
+                        <img src="profile-photo.png" onerror="handleImageError(this)" alt="Roberto Morelli">
                     </div>
                     <div class="hero-name-block">
                         <div class="hero-eyebrow">Data Scientist & Analytics Lead</div>
@@ -867,10 +867,7 @@
                     </div>
                     <div class="exp-content">
                         <div class="exp-company-row">
-                            <picture>
-                                <source srcset="logos/poste-italiane.svg" type="image/svg+xml">
-                                <img src="logos/poste-italiane.png" alt="Poste Italiane" class="exp-company-logo">
-                            </picture>
+                            <img src="logos/poste-italiane.svg" onerror="handleImageError(this)" alt="Poste Italiane" class="exp-company-logo">
                             <h3 class="exp-company">Poste Italiane</h3>
                         </div>
                         <div class="exp-role">Data Scientist & Analytics Lead</div>
@@ -890,10 +887,7 @@
                     </div>
                     <div class="exp-content">
                         <div class="exp-company-row">
-                            <picture>
-                                <source srcset="logos/aruba.svg" type="image/svg+xml">
-                                <img src="logos/aruba.png" alt="Aruba" class="exp-company-logo">
-                            </picture>
+                            <img src="logos/aruba.svg" onerror="handleImageError(this)" alt="Aruba" class="exp-company-logo">
                             <h3 class="exp-company">Aruba.it</h3>
                         </div>
                         <div class="exp-role">Data Analyst</div>
@@ -912,10 +906,7 @@
                     </div>
                     <div class="exp-content">
                         <div class="exp-company-row">
-                             <picture>
-                                <source srcset="logos/allianz.svg" type="image/svg+xml">
-                                <img src="logos/allianz.png" alt="Allianz" class="exp-company-logo">
-                            </picture>
+                            <img src="logos/allianz.svg" onerror="handleImageError(this)" alt="Allianz" class="exp-company-logo">
                             <h3 class="exp-company">Allianz</h3>
                         </div>
                         <div class="exp-role">QA & Delivery Lead</div>
@@ -941,14 +932,8 @@
                             <li>@Intesa Sanpaolo — L2 Service Desk, <span class="highlight-metric">doubled throughput (25→70/day)</span></li>
                         </ul>
                         <div class="early-career-logos">
-                             <picture>
-                                <source srcset="logos/luxottica.svg" type="image/svg+xml">
-                                <img src="logos/luxottica.png" alt="Luxottica">
-                            </picture>
-                             <picture>
-                                <source srcset="logos/intesa-sanpaolo.svg" type="image/svg+xml">
-                                <img src="logos/intesa-sanpaolo.png" alt="Intesa Sanpaolo">
-                            </picture>
+                            <img src="logos/luxottica.svg" onerror="handleImageError(this)" alt="Luxottica">
+                            <img src="logos/intesa-sanpaolo.svg" onerror="handleImageError(this)" alt="Intesa Sanpaolo">
                         </div>
                     </div>
                 </div>
@@ -998,7 +983,7 @@
                             Scikit-learn
                         </li>
                         <li>
-                            <img src="https://cdn.worldvectorlogo.com/logos/prophet.svg" alt="Prophet">
+                            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/googleanalytics.svg" alt="Prophet">
                             Time Series (Prophet)
                         </li>
                         <li>
@@ -1006,7 +991,7 @@
                             Anomaly Detection
                         </li>
                         <li>
-                            <img src="https://www.svgrepo.com/show/374016/settings.svg" alt="Custom">
+                             <img src="https://www.svgrepo.com/show/532033/gear.svg" alt="Custom">
                             Custom Algorithms
                         </li>
                         <li>
@@ -1036,7 +1021,7 @@
                             ETL Pipelines
                         </li>
                         <li>
-                            <img src="https://www.svgrepo.com/show/353659/cost-estimation.svg" alt="FinOps">
+                             <img src="https://www.svgrepo.com/show/532616/money-bag.svg" alt="FinOps">
                             FinOps
                         </li>
                     </ul>
@@ -1132,28 +1117,21 @@
             <h3 class="certifications-title">Certifications</h3>
             <div class="credentials-list">
                 <div class="credential-item">
-                    <img src="https://www.vectorlogo.zone/logos/databricks/databricks-icon.svg" alt="Databricks">
-                    <div class="credential-info">
-                        <div class="credential-name">Data Engineer Associate</div>
-                        <div class="credential-issuer">Databricks · 2025</div>
-                    </div>
-                </div>
-                <div class="credential-item">
-                    <img src="logos/datamasters.png" alt="DataMasters">
+                    <img src="logos/datamasters.png" onerror="handleImageError(this)" alt="DataMasters">
                     <div class="credential-info">
                         <div class="credential-name">AI Agentic Apps</div>
                         <div class="credential-issuer">DataMasters · 2024</div>
                     </div>
                 </div>
                 <div class="credential-item">
-                    <img src="logos/neural-academy.png" alt="Neural Academy">
+                    <img src="logos/neural-academy.png" onerror="handleImageError(this)" alt="Neural Academy">
                     <div class="credential-info">
                         <div class="credential-name">Data Science Master</div>
                         <div class="credential-issuer">Neural Academy · 2022</div>
                     </div>
                 </div>
                 <div class="credential-item">
-                    <img src="logos/unipi.png" alt="Università di Pisa">
+                    <img src="logos/unipi.png" onerror="handleImageError(this)" alt="Università di Pisa">
                     <div class="credential-info">
                         <div class="credential-name">Data-Driven PM</div>
                         <div class="credential-issuer">Università di Pisa · 2021</div>
@@ -1199,6 +1177,30 @@
     </footer>
 
     <script>
+        // Funzione per gestire gli errori di caricamento immagini
+        function handleImageError(img) {
+            img.onerror = null;
+
+            const currentSrc = img.src;
+            
+            if (currentSrc.endsWith('.svg')) {
+                const pngSrc = currentSrc.replace('.svg', '.png');
+                img.src = pngSrc;
+                img.onerror = function() {
+                    img.onerror = null; 
+                    setPlaceholder(img);
+                };
+            } else {
+                setPlaceholder(img);
+            }
+        }
+
+        function setPlaceholder(img) {
+            img.src = 'https://placehold.co/100x100/e0ddd5/6b6b6b?text=IMG';
+            img.style.opacity = '0.5'; 
+            console.log('Immagine mancante sostituita con placeholder:', img.alt);
+        }
+
         // Smooth reveal on scroll
         const observerOptions = {
             threshold: 0.1,
