@@ -370,8 +370,21 @@
             font-family: 'Instrument Serif', serif;
             font-size: 26px;
             font-weight: 400;
-            /* Nascosto perché mostrato solo dal logo */
             display: none;
+        }
+
+        /* Early Career: mostra i loghi nella company-row */
+        .experience-item:last-child .exp-company-row {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .experience-item:last-child .exp-company-logo {
+            height: 32px;
+            width: auto;
+            opacity: 1;
+            object-fit: contain;
         }
 
         .exp-role {
@@ -409,17 +422,7 @@
         }
 
         .early-career-logos {
-            display: flex;
-            gap: 20px;
-            align-items: center;
-            margin-top: 12px;
-        }
-
-        .early-career-logos img {
-            height: 24px;
-            width: auto;
-            opacity: 0.7;
-            object-fit: contain;
+            display: none;
         }
 
         /* Skills Section */
@@ -606,7 +609,6 @@
         }
 
         .credential-item img {
-            /* Nascosto */
             display: none;
         }
 
@@ -925,6 +927,8 @@
                     </div>
                     <div class="exp-content">
                         <div class="exp-company-row">
+                            <img src="logos/luxottica.svg" onerror="handleImageError(this)" alt="Luxottica" class="exp-company-logo">
+                            <img src="logos/intesa-sanpaolo.svg" onerror="handleImageError(this)" alt="Intesa Sanpaolo" class="exp-company-logo">
                             <h3 class="exp-company">Early Career</h3>
                         </div>
                         <div class="exp-role">Consultant @ Assioma.net</div>
@@ -932,10 +936,6 @@
                             <li>@Luxottica — QA for Oakley e-commerce</li>
                             <li>@Intesa Sanpaolo — L2 Service Desk, <span class="highlight-metric">doubled throughput (25→70/day)</span></li>
                         </ul>
-                        <div class="early-career-logos">
-                            <img src="logos/luxottica.svg" onerror="handleImageError(this)" alt="Luxottica">
-                            <img src="logos/intesa-sanpaolo.svg" onerror="handleImageError(this)" alt="Intesa Sanpaolo">
-                        </div>
                     </div>
                 </div>
             </div>
